@@ -1,0 +1,31 @@
+/* Base nav links inside YOUR navbar */
+nav.navbar .navbar-nav .nav-link {
+  padding: .375rem .75rem;             /* a little pill space */
+  border-radius: .5rem;                /* soft corners */
+  transition: color .15s ease,
+              background-color .15s ease,
+              transform .15s ease,
+              box-shadow .15s ease;
+}
+
+/* Fancy ACTIVE state (matches your PHP: class="nav-link ... active") */
+nav.navbar .navbar-nav .nav-link.active,
+nav.navbar .navbar-nav .nav-link[aria-current="page"] {
+  color: #fff !important;
+  background-image: linear-gradient(135deg, #1e3c72, #2a5298);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  transform: translateY(-1px);
+}
+
+/* Hover for non-active links */
+nav.navbar .navbar-nav .nav-link:not(.active):hover {
+  background-color: rgba(42,82,152,.08);
+  color: #2a5298;
+  transform: translateY(-1px);
+}
+
+/* Accessible focus ring */
+nav.navbar .navbar-nav .nav-link:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(42,82,152,.25);
+}

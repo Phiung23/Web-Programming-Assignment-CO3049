@@ -1,0 +1,54 @@
+/* Base style */
+.category-card {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+  color: #fff;
+}
+
+/* Specific category backgrounds */
+#phone-cat {
+  background: linear-gradient(135deg, #56ccf2, #2f80ed); /* blue gradient */
+}
+
+#watch-cat {
+  background: linear-gradient(135deg, #f7971e, #ffd200); /* orange/yellow */
+}
+
+#camera-cat {
+  background: linear-gradient(135deg, #f85032, #e73827); /* red gradient */
+}
+
+#headphone-cat {
+  background: linear-gradient(135deg, #11998e, #38ef7d); /* green gradient */
+}
+
+#laptop-cat {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0); /* purple gradient */
+}
+
+/* Hover effect (lift + glow) */
+.category-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Card text readable */
+.category-card h6 {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* Center image with white background for contrast */
+.category-card img {
+  background: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  width: 70px;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: rotate(-5deg) scale(1.1);
+}

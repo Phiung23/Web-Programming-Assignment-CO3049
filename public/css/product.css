@@ -1,0 +1,17 @@
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer; /* show pointer hand */
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  border-color: #2a5298; /* subtle border highlight */
+}
+
+/* Active (click) effect */
+.card:active {
+  transform: scale(0.98);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
