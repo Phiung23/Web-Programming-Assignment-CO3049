@@ -29,7 +29,7 @@
         style="min-height: 400px;">
         <h1 class="display-5 mb-3"><?= $heroProduct['name'] ?></h1>
         <p class="lead mb-4"><?= $heroProduct['description'] ?></p>
-        <a href="#" class="btn btn-light btn-lg align-self-start">Shop Now</a>
+        <a href="index.php?route=product_details&id=<?= $heroProduct['product_id'] ?>" class="btn btn-light btn-lg align-self-start">Shop Now</a>
       </div>
 
       <!-- Right: Image -->

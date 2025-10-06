@@ -49,6 +49,14 @@ switch ($route) {
         $controller = new ProductDetailsController($pdo);
         $controller->show_product_details($_GET['id']);
         break;
+    case 'post_comments':
+        require_once __DIR__ . '/config/auth-check.php';
+        require_once __DIR__ . '/app/controller/productDetailsController.php';
+        $controller = new ProductDetailsController($pdo);
+        $controller->save_comments($_POST);
+        header("Location: index.php?route=product_details&id=" . urlencode($_POST['product_id']));
+        exit();
+        break;
     case 'contact':
     case 'faq':
 

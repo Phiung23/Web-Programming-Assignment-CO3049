@@ -4,7 +4,7 @@ $timeout = 1800; // 30 minutes
 
 // Check login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /login.php");
+    header("Location: index.php?route=login");
     exit();
 }
 

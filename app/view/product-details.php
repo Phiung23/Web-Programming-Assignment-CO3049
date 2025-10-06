@@ -68,12 +68,15 @@
         <!-- comment bar -->
         <div class="row justify-content-center mt-4">
             <div class="col-12 col-lg-10">
-                <form class="d-flex" id="comment-bar">
+                <form class="d-flex" id="comment-bar" action="index.php?route=post_comments" method="POST">
                     <input
                         class="form-control form-control-lg rounded-3"
-                        type="search"
+                        type="text"
+                        name="comment"
                         placeholder="Leave Comment"
                         aria-label="Search">
+                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
+                    <button type="submit" class="btn btn-primary ms-2">Send</button>
                 </form>
             </div>
         </div>
@@ -88,7 +91,7 @@
                         <div class="p-4 mb-3 bg-white rounded shadow-sm">
                             <!-- Header: user + date -->
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="fw-bold mb-0"><?= htmlspecialchars($c['user_id']) ?></h6>
+                                <h6 class="fw-bold mb-0">User #<?= htmlspecialchars($c['user_id']) ?></h6>
                                 <small class="text-muted">
                                     <?= date("d F, Y", strtotime($c['created_at'])) ?>
                                 </small>
@@ -120,6 +123,7 @@
     <?php include __DIR__ . '/partials/footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/product-details.js"></script>
 </body>
 
 </html>
