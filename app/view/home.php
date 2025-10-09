@@ -152,7 +152,7 @@
               </p>
 
               <!-- Buy Now Button -->
-              <a href="index.php?route=product&id=<?= $product['product_id'] ?>"
+              <a href="index.php?route=product_details&id=<?= $product['product_id'] ?>"
                 class="btn btn-dark mt-auto">
                 Buy Now
               </a>

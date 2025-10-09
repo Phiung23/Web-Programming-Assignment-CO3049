@@ -20,7 +20,6 @@ function sendFilterRequest(page, cat = "all") {
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-
             const container = document.getElementById("product-list");
             if (!container) return;
             container.innerHTML = "";
@@ -38,7 +37,6 @@ function sendFilterRequest(page, cat = "all") {
 
                     const card = document.createElement("div");
                     card.dataset.productId = p.product_id;
-                    console.log(p)
                     card.className = "card h-100"; // h-100 makes all cards same height
                     card.innerHTML = `
             <img src="${p.imageUrl}" class="card-img-top" alt="${p.name}">
@@ -111,4 +109,48 @@ radios.forEach((r) => {
 form.addEventListener("submit", (e) => {
     e.preventDefault(); // prevent full page reload
     sendFilterRequest();
+});
+
+// AJAX drop down
+const input = document.getElementById("search-name-product");
+const suggestionsBox = document.getElementById("suggestions");
+
+input.addEventListener("keyup", () => {
+    const partial_name = input.value.trim();
+    if (partial_name.length === 0) {
+        suggestionsBox.style.display = "none";
+        suggestionsBox.innerHTML = "";
+        return;
+    }
+    const url =
+        "index.php?route=get_filtered_products" +
+        "&category=" +
+        encodeURIComponent("all") +
+        "&search=" +
+        encodeURIComponent(partial_name) +
+        "&page=" +
+        encodeURIComponent(1);
+
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            suggestionsBox.innerHTML = ""; // clear previous results
+            if (data.products.length === 0) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            data.products.forEach((product) => {
+                const item = document.createElement("a");
+                item.classList.add("list-group-item", "list-group-item-action");
+                item.textContent = product.name;
+                item.href = "index.php?route=product_details&id=" + product.product_id;
+                suggestionsBox.appendChild(item);
+            });
+
+            suggestionsBox.style.display = "block";
+        })
+        .catch((err) => {
+            console.error("Error fetching suggestions:", err);
+        });
 });

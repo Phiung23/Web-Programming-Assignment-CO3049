@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>About Us | Yaki Electronics</title>
-    <link rel="stylesheet" href="public/css/product.css">
+    <link rel="stylesheet" href="public/css/product-details.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -54,32 +57,76 @@
     </div>
     <!-- product details -->
     <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="p-4 p-md-5 bg-white rounded shadow-sm">
+        <div class="row justify-content-center g-4">
+
+            <!-- Product Details -->
+            <div class="col-12 col-lg-6">
+                <div class="p-4 p-md-5 bg-white rounded shadow-sm h-100">
                     <h4 class="fw-bold mb-3">Details</h4>
-                    <p class="text-muted">
-                        <?= $product['details'] ?>
+                    <p class="text-muted mb-0">
+                        <?= nl2br(htmlspecialchars($product['details'])) ?>
                     </p>
                 </div>
             </div>
-        </div>
 
-        <!-- comment bar -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-12 col-lg-10">
-                <form class="d-flex" id="comment-bar" action="index.php?route=post_comments" method="POST">
-                    <input
-                        class="form-control form-control-lg rounded-3"
-                        type="text"
-                        name="comment"
-                        placeholder="Leave Comment"
-                        aria-label="Search">
-                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
-                    <button type="submit" class="btn btn-primary ms-2">Send</button>
-                </form>
+            <!-- Ratings & Reviews -->
+            <div class="col-12 col-lg-6">
+                <div class="p-4 p-md-5 bg-white rounded shadow-sm text-center h-100">
+                    <h4 class="fw-bold mb-3">Ratings & Reviews</h4>
+
+                    <!-- Average Rating Number -->
+                    <div class="display-4 fw-bold text-warning">
+                        <?= number_format($product['avg_rating'], 1) ?>
+                    </div>
+
+                    <!-- Star Visualization -->
+                    <div class="mb-2">
+                        <?php
+                        $rating = round($product['avg_rating']);
+                        for ($i = 1; $i <= 5; $i++) {
+                            echo $i <= $rating
+                                ? '<i class="bi bi-star-fill text-warning"></i>'
+                                : '<i class="bi bi-star text-warning"></i>';
+                        }
+                        ?>
+                    </div>
+
+                    <!-- Total Reviews -->
+                    <p class="text-muted small mb-0">
+                        Based on <?= htmlspecialchars($product['total_reviews']) ?> reviews
+                    </p>
+                </div>
             </div>
+
         </div>
+    </div>
+
+    <!-- comment bar -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-lg-10">
+            <form class="d-flex" id="comment-bar" action="index.php?route=post_comments" method="POST">
+                <input
+                    class="form-control form-control-lg rounded-3"
+                    type="text"
+                    name="comment"
+                    placeholder="Leave Comment"
+                    aria-label="Search">
+                <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
+                <div class="text-center mb-2">
+                    <div id="rating-stars" class="d-inline-flex justify-content-center">
+                        <i class="bi bi-star fs-3 text-secondary" data-index="1"></i>
+                        <i class="bi bi-star fs-3 text-secondary" data-index="2"></i>
+                        <i class="bi bi-star fs-3 text-secondary" data-index="3"></i>
+                        <i class="bi bi-star fs-3 text-secondary" data-index="4"></i>
+                        <i class="bi bi-star fs-3 text-secondary" data-index="5"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="rating-value" value="0">
+                    <button type="submit" class="btn btn-primary ms-2">Send</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
     </div>
     <!-- Comment Section -->
     <div class="container my-4">

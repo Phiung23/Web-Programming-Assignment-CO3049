@@ -51,7 +51,7 @@ function loadProducts(route) {
               <p class="text-dark fw-bold fs-5 mb-3">$${Number(
                   product.price
               ).toFixed(2)}</p>
-              <a href="index.php?route=product&id=${product.product_id}"
+              <a href="index.php?route=product_details&id=${product.product_id}"
                  class="btn btn-dark mt-auto">Buy Now</a>
             </div>
           </div>

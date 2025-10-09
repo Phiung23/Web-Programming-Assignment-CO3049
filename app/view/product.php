@@ -26,8 +26,20 @@
                 <h5 class="mb-3">Products</h5>
                 <form id="filterForm">
                     <!-- Search -->
-                    <div class="mb-3">
-                        <input type="text" name="search-name-product" class="form-control" placeholder="Search">
+                    <div class="position-relative mb-3" style="max-width: 400px;">
+                        <input
+                            type="text"
+                            id="search-name-product"
+                            name="search-name-product"
+                            class="form-control"
+                            placeholder="Search products..."
+                            autocomplete="off">
+
+                        <!-- Dropdown suggestion container -->
+                        <div id="suggestions"
+                            class="list-group position-absolute w-100 shadow-sm"
+                            style="z-index: 1000; display: none;">
+                        </div>
                     </div>
 
                     <!-- Categories (radio buttons, only one can be selected) -->

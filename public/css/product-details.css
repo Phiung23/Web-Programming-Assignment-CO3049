@@ -1,0 +1,4 @@
+#rating-stars i {
+  cursor: pointer;
+  transition: color 0.2s;
+}

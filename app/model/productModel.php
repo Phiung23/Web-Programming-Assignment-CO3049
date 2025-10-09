@@ -92,7 +92,14 @@ class ProductModel
     }
     public function get_product_by_id($id)
     {
-        $sql = "SELECT * from Product WHERE product_id = ?";
+        $sql = " SELECT
+            p.*,
+            COALESCE(AVG(c.rating), 0) AS avg_rating,
+            COUNT(c.product_id) AS total_reviews
+            FROM product p
+            LEFT JOIN usercomment c ON p.product_id = c.product_id
+            WHERE p.product_id = ?
+            GROUP BY p.product_id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);

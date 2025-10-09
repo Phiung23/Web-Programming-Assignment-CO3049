@@ -15,3 +15,11 @@
   transform: scale(0.98);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
+
+#suggestions a {
+  cursor: pointer;
+}
+
+#suggestions a:hover {
+  background-color: #f8f9fa;
+}

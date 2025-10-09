@@ -33,6 +33,7 @@ class ProductDetailsController
         $product_id = $data['product_id'];
         $user_id = $_SESSION['user_id'];
         $comment = $data['comment'];
-        $this->userCommentModel->save_comments($product_id, $user_id, $comment);
+        $rating = $data['rating'];
+        $this->userCommentModel->save_comments($product_id, $user_id, $comment, $rating);
     }
 }
